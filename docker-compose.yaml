@@ -1,0 +1,34 @@
+services:
+  web:
+    container_name: web
+    build:
+      context: ./apps/web
+      dockerfile: Dockerfile.dev
+
+    volumes:
+      - ./apps/web:/app
+      - /app/node_modules
+    environment:
+      NODE_ENV: development
+
+    ports:
+      - "3000:3000"
+
+  api:
+    container_name: api
+    build:
+      context: ./apps/api
+      dockerfile: Dockerfile.dev
+    image: strapi:latest
+    restart: unless-stopped
+    env_file:
+      - ./apps/api/.env
+    volumes:
+      - ./apps/api/config:/opt/app/config
+      - ./apps/api/src:/opt/app/src
+      - ./apps/api/package.json:/opt/package.json
+      - ./apps/api/.env:/opt/app/.env
+      - ./apps/api/public/uploads:/opt/app/public/uploads
+      - ./apps/api/.tmp:/opt/app/.tmp
+    ports:
+      - "1337:1337"
