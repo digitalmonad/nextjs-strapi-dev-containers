@@ -1,0 +1,16 @@
+{
+  "name": "Multi-container Workspace",
+  "dockerComposeFile": "../docker-compose.yaml",
+  "service": "web",
+  "workspaceFolder": "/",
+  "overrideCommand": false,
+  "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"],
+  "runServices": ["web", "api"],
+  "remoteEnv": {
+    "NODE_ENV": "development"
+  },
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/sh"
+  },
+  "shutdownAction": "none"
+}

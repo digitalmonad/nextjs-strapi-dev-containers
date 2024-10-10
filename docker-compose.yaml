@@ -26,7 +26,6 @@ services:
     volumes:
       - ./apps/api/config:/opt/app/config
       - ./apps/api/src:/opt/app/src
-      - ./apps/api/package.json:/opt/package.json
       - ./apps/api/.env:/opt/app/.env
       - ./apps/api/public/uploads:/opt/app/public/uploads
       - ./apps/api/.tmp:/opt/app/.tmp
